@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'quizes#main'
+  root 'quizes#index'
   resources :quizes, shallow: true do
     resources :answer, only: %i[index]
   end
