@@ -1,21 +1,25 @@
-  <p>
-    <strong>Title:</strong>
-    <%= quize.title %>
-  </p>
-  <p>
-    <strong>Content:</strong>
-    <%= quize.content %>
-  </p>
-  <p>
-    <strong>first_line:</strong>
-    <%= quize.first_line %>
-  </p>
-
-    <p>
-    <strong>second_line:</strong>
-    <%= quize.second_line %>
-  </p>
-    <p>
-    <strong>third_line:</strong>
-    <%= quize.third_line %>
-  </p>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-auto">
+        <h1 class="">
+          <%= quize.title %>
+        </h1>
+      </div>
+      <div class= "col-12 p-5">
+        <h2>
+          <%= quize.first_line %>
+        </h2>
+        <h2>
+        <%="　　　"%> <%= quize.second_line %>
+        </h2>
+          <h2>
+          <%="　　　　　"%><%= quize.third_line %>
+        </h2>
+      </div>
+      <hr>
+        <p>
+        <strong>問題のヒント：</strong>
+        <%= quize.content %>
+      </p>
+    </div>
+  </div>

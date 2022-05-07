@@ -2,9 +2,9 @@
 
 <%= render partial: "quize_title", locals: {quize: @quize} %>
 
-<div>
-  <%= link_to "答えを見る", quize_answer_index_path(@quize) %> |
-  <%= link_to "Back to quizes", quizes_path %>
-
-  <%= button_to "Destroy this quize", @quize, method: :delete %>
+<div class= "container">
+  <%= link_to "答えを見る", quize_answer_index_path(@quize), class: "btn btn-warning m-2" %>
+  <span class="h1" ><%= ":"%></span>
+  <%= link_to "クイズ一覧に戻る", quizes_path ,class: "btn btn-primary m-2"%>
+  <%# button_to "Destroy this quize", @quize, method: :delete %>
 </div>

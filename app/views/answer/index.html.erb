@@ -1,5 +1,7 @@
-<h1>答え！！</h1>
-<br>
-<h1> <%= @quize.answer_word%> </h1>
-
-<%= link_to "問題に戻る", quizes_path %>
+<div class="container">
+  <h1>正解は...</h1>
+  <br>
+  <h1> 「<%= @quize.answer_word %>」 </h1>
+  <hr>
+<%= link_to "問題に戻る", quizes_path, class: "btn btn-success"%>
+</div>
