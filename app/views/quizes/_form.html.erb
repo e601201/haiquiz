@@ -1,0 +1,46 @@
+<%= form_with(model: quize) do |form| %>
+  <% if quize.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(quize.errors.count, "error") %> prohibited this quize from being saved:</h2>
+
+      <ul>
+        <% quize.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_area :content %>
+  </div>
+  <div>
+    <%= form.label :first_line, style: "display: block" %>
+    <%= form.text_field :first_line %>
+  </div>
+  <div>
+    <%= form.label :second_line, style: "display: block" %>
+    <%= form.text_field :second_line %>
+  </div>
+  <div>
+    <%= form.label :third_line, style: "display: block" %>
+    <%= form.text_field :third_line %>
+  </div>
+    <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select :status, Quize.statuses.keys, {prompt: "選択してください"}, class: "status-select" %>
+  </div>
+    <div>
+    <%= form.label :answer_word, style: "display: block" %>
+    <%= form.text_field :answer_word %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

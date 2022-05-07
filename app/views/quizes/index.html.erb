@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Quizes</h1>
+
+<div id="quizes">
+  <% @quizes.each do |quize| %>
+    <%= render quize %>
+    <p>
+      <%= link_to "Show this quize", quize %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "クイズを作る。(工事中)", "#" %>

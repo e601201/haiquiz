@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render partial: "quize_title", locals: {quize: @quize} %>
+
+<div>
+  <%= link_to "答えを見る", quize_answer_index_path(@quize) %> |
+  <%= link_to "Back to quizes", quizes_path %>
+
+  <%= button_to "Destroy this quize", @quize, method: :delete %>
+</div>
