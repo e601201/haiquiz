@@ -1,49 +1,50 @@
-<%= form_with(model: quize) do |form| %>
+<%= form_with model: quize,data: { turbo: false } do |form| %>
   <% if quize.errors.any? %>
-    <div style="color: red">
+    <div class="alert alert-warning" role="alert">
       <h2><%= pluralize(quize.errors.count, "error") %> prohibited this quize from being saved:</h2>
 
       <ul>
         <% quize.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li ><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
+
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.label :first_line,"上の句", style: "display: block", class:"form-label"%>
+    <%= form.text_field :first_line, class: "form-control" %>
+  </div>
+  <div>
+    <%= form.label :second_line,"中の句", style: "display: block",class:"form-label" %>
+    <%= form.text_field :second_line , class: "form-control"%>
+  </div>
+  <div>
+    <%= form.label :third_line,"下の句", style: "display: block",class:"form-label" %>
+    <%= form.text_field :third_line , class: "form-control"%>
+  </div>
+    <div>
+    <%= form.label :status, "穴抜けにする句を選択", style: "display: block",class:"form-label" %>
+    <%= form.select :status, {"上の句"=>"first_line","中の句"=>"second_line","下の句" => "third_line"}, {prompt: "選択してください"}, class: "form-select" %>
+  </div>
+    <div>
+    <%= form.label :answer_word,"穴抜けにする言葉(選択した句の中から書いてね)", style: "display: block",class:"form-label" %>
+    <%= form.text_field :answer_word , class: "form-control"%>
+  </div>
+<hr>
+  <div>
+    <%= form.label :title,"タイトル", style: "display: block",class:"form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
-  </div>
-  <div>
-    <%= form.label :first_line, style: "display: block"%>
-    <%= form.text_field :first_line %>
-  </div>
-  <div>
-    <%= form.label :second_line, style: "display: block" %>
-    <%= form.text_field :second_line %>
-  </div>
-  <div>
-    <%= form.label :third_line, style: "display: block" %>
-    <%= form.text_field :third_line %>
-  </div>
-    <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.select :status, Quize.statuses.keys, {prompt: "選択してください"}, class: "status-select" %>
-  </div>
-    <div>
-    <%= form.label :answer_word, style: "display: block" %>
-    <%= form.text_field :answer_word %>
+    <%= form.label :content,"ヒント", style: "display: block" ,class:"form-label"%>
+    <%= form.text_area :content ,placeholder:"問題のヒントを記入しよう",class: "form-control"%>
   </div>
   <div>
   <br>
-    <p>現在工事中です！<br>
-    しばしお待ちください</p>
-    <%# form.submit %>
+
+    <%= form.submit "作成する！",class: "btn btn-primary"%>
   </div>
 <% end %>

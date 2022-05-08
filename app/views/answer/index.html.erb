@@ -1,7 +1,11 @@
 <div class="container">
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+  <p style="color: green"><%= notice %></p>
   <h1>正解は...</h1>
   <br>
   <h1> 「<%= @quize.answer_word %>」 </h1>
   <hr>
-<%= link_to "問題に戻る", quizes_path, class: "btn btn-success"%>
+<%= link_to "クイズ一覧", quizes_path, class: "btn btn-secondary"%>
 </div>

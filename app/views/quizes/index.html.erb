@@ -1,16 +1,17 @@
-<p style="color: green"><%= notice %></p>
-
-<div id="quizes">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col-2">ID</th>
-        <th scope="col">タイトル</th>
-        <th scope="col">説明文</th>
-      </tr>
-    </thead>
-    <% @quizes.each do |quize| %>
-      <%= render quize %>
-    <% end %>
-  </table> 
+<div class="container">
+  <div style="color: green"><%= notice %></div>
+  <div id="quizes">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col-2">ID</th>
+          <th scope="col">タイトル</th>
+          <th scope="col">ヒント</th>
+        </tr>
+      </thead>
+      <% @quizes.each do |quize| %>
+        <%= render quize %>
+      <% end %>
+    </table> 
+  </div>
 </div>

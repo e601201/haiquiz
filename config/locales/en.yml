@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  first_line: "上の句"
+  second_line: "中の句"
+  third_line: "下の句"

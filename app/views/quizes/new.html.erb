@@ -1,9 +1,18 @@
-<h1>俳句を作る(工事中)</h1>
+<div class="container">
+  <h1>俳句を作る</h1>
+  <ol>
+    <li>まずは俳句を作ろう！！(上の句,中の句,下の句)<span style= "color:red;"> *必須*</span></li>
+    <li>その中で穴抜けにしたい言葉を選ぼう（句を選択、句の中から穴抜けにする言葉を記入)<span style= "color:red;"> *必須*</span></li>
+    <li>タイトルとヒントをつけよう！！</li>
+  </ol>
+    <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
 
-<%= render "form", quize: @quize %>
-
-<br>
-<hr>
-<div>
-  <%= link_to "Back to quizes", quizes_path, class: "btn btn-success" %>
+  <%= render "form", quize: @quize %>
+  <br>
+  <hr>
+  <div>
+    <%= link_to "クイズ一覧", quizes_path, class: "btn btn-secondary" %>
+  </div>
 </div>

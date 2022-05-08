@@ -22,10 +22,20 @@ class QuizesController < ApplicationController
   # POST /quizes or /quizes.json
   def create
     @quize = Quize.new(quize_params)
+    @quize.title = "無題" if @quize.title.empty?
+    @quize.content = "ノーヒント" if @quize.content.empty?
 
+    p word = @quize.select_answer_word_line(@quize)
+    empty_word = "○"*@quize.answer_word.length
+    if word&.include?(@quize.answer_word) 
+      word.gsub!(/#{@quize.answer_word}/,"[#{empty_word}]")
+    else
+      flash.now[:danger] = "穴抜けにする言葉が句の中に入ってません"
+      render :new and return
+    end
     respond_to do |format|
       if @quize.save
-        format.html { redirect_to quize_url(@quize), notice: "Quize was successfully created." }
+        format.html { redirect_to quize_url(@quize), notice: "クイズが作成されました" }
         format.json { render :show, status: :created, location: @quize }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +48,7 @@ class QuizesController < ApplicationController
   def update
     respond_to do |format|
       if @quize.update(quize_params)
-        format.html { redirect_to quize_url(@quize), notice: "Quize was successfully updated." }
+        format.html { redirect_to quize_url(@quize), notice: "クイズが作成されました" }
         format.json { render :show, status: :ok, location: @quize }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +62,7 @@ class QuizesController < ApplicationController
     @quize.destroy
 
     respond_to do |format|
-      format.html { redirect_to quizes_url, notice: "Quize was successfully destroyed." }
+      format.html { redirect_to quizes_url, notice: "クイズが消去されました" }
       format.json { head :no_content }
     end
   end

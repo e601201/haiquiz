@@ -1,10 +1,26 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render partial: "quize_title", locals: {quize: @quize} %>
-
 <div class= "container">
-  <%= link_to "答えを見る", quize_answer_index_path(@quize), class: "btn btn-warning m-2" %>
-  <span class="h1" ><%= ":"%></span>
-  <%= link_to "クイズ一覧に戻る", quizes_path ,class: "btn btn-primary m-2"%>
-  <%# button_to "Destroy this quize", @quize, method: :delete %>
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+  <div class= "row">
+    <div class="col border shadow" >
+      <%= form_with url: quize_answer_index_path(@quize),data: { turbo: false } do |form| %>
+        <div class="row">
+          <div class= "col">
+            <%= form.label :answer_word,"解答欄", style: "display: block" ,class:"form-label"%>
+            <%= form.text_field :answer_word , class:"form-control", placeholder:"答えを記入してね"%>
+            <%= form.submit "送信" ,class:"btn btn-primary m-2"%>
+          </div >
+        </div>
+      <% end %>
+    </div>
+    <div class="col ">
+      <div class="row justify-content-end">
+        <%= link_to "答えを見る", quize_answer_index_path(@quize), class: "btn btn-warning col-4 m-1 shadow" %>
+        <%= link_to "クイズ一覧", quizes_path ,class: "btn btn-secondary col-4 m-1 shadow"%>
+        <%= button_to "Destroy this quize", @quize, method: :delete %>
+      </div>
+    </div>
+  </div>
 </div>
