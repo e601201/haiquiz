@@ -25,11 +25,11 @@
     <%= form.text_field :third_line , class: "form-control"%>
   </div>
     <div>
-    <%= form.label :status, "穴抜けにする句を選択", style: "display: block",class:"form-label" %>
+    <%= form.label :status, "穴埋めクイズにする句を選択", style: "display: block",class:"form-label" %>
     <%= form.select :status, {"上の句"=>"first_line","中の句"=>"second_line","下の句" => "third_line"}, {prompt: "選択してください"}, class: "form-select" %>
   </div>
     <div>
-    <%= form.label :answer_word,"穴抜けにする言葉(選択した句の中から書いてね)", style: "display: block",class:"form-label" %>
+    <%= form.label :answer_word,"穴埋めにする言葉(選択した句の中から書いてね)", style: "display: block",class:"form-label" %>
     <%= form.text_field :answer_word , class: "form-control"%>
   </div>
 <hr>

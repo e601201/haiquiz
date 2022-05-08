@@ -30,7 +30,7 @@ class QuizesController < ApplicationController
     if word&.include?(@quize.answer_word) 
       word.gsub!(/#{@quize.answer_word}/,"[#{empty_word}]")
     else
-      flash.now[:danger] = "穴抜けにする言葉が句の中に入ってません"
+      flash.now[:danger] = "穴埋めにする言葉が句の中に入ってません"
       render :new and return
     end
     respond_to do |format|
