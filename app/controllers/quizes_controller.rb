@@ -1,4 +1,5 @@
 class QuizesController < ApplicationController
+  skip_before_action :check_logged_in, only: :index
   before_action :set_quize, only: %i[ show edit update destroy ]
 
   # GET /quizes or /quizes.json
