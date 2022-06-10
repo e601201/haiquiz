@@ -12,6 +12,14 @@
   </head>
 
   <body>
+      <% if current_user %>
+        <%= image_tag current_user.image %>
+        ようこそ<%= current_user.name %>さん
+        <%= link_to "ログアウト", log_out_path %>
+      <% else  %>
+        ようこそゲストさん
+        <%= button_to "Googleでログイン", "/auth/google_oauth2",class:"btn btn-danger shadow ", method: :post, data: { turbo: false } %>
+      <% end %>
     <main class= "bg-light">
       <%= render 'share/header'%>
       <%= yield %>
